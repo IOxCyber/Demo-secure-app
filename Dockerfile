@@ -1,5 +1,5 @@
 # Use an official Python base image
-FROM python:3.10-slim
+FROM python:3.14.0b1-bookworm
 
 # Set working directory inside container
 WORKDIR /app
@@ -9,7 +9,6 @@ COPY . .
 
 # Install dependencies
 RUN pip install flask
-RUN pip install --upgrade setuptools>=70.0.0
 
 # Run the app
 CMD ["python", "app.py"]
