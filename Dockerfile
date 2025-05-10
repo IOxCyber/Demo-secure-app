@@ -9,6 +9,7 @@ COPY . .
 
 # Install dependencies
 RUN pip install flask
+RUN pip install --upgrade setuptools>=70.0.0
 
 # Run the app
 CMD ["python", "app.py"]
