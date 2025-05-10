@@ -7,6 +7,10 @@ WORKDIR /app
 # Copy local files into the container
 COPY . .
 
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Install dependencies
 RUN pip install flask
 
