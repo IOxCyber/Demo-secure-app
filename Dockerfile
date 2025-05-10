@@ -1,18 +1,12 @@
-# Use an official Python base image
-FROM python:3.14.0b1-bookworm
+FROM python:3.10-slim-bookworm
 
-# Set working directory inside container
 WORKDIR /app
-
-# Copy local files into the container
 COPY . .
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+# Upgrade pip and setuptools to secure versions
+RUN pip install --upgrade pip==23.3 setuptools==70.0.0
 
-# Install dependencies
+# Install application dependencies
 RUN pip install flask
 
-# Run the app
 CMD ["python", "app.py"]
