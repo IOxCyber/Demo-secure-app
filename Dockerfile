@@ -3,11 +3,10 @@ FROM python:3.10-slim-bookworm
 WORKDIR /app
 COPY . .
 
-# Upgrade pip and setup tools to secure versions
-# RUN pip install --upgrade pip==23.3 setuptools>=78.1.1
-RUN pip install --upgrade "setuptools>=78.1.1"
+# Upgrade pip and setuptools safely (pin exact versions for consistency)
+RUN pip install --no-cache-dir --upgrade pip==23.3.1 setuptools==78.1.1
 
-# Install application dependencies
-RUN pip install flask
+# Install app dependencies
+RUN pip install --no-cache-dir flask
 
 CMD ["python", "app.py"]
